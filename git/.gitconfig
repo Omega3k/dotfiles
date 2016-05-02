@@ -1,0 +1,14 @@
+[include]
+	path = ~/.gitconfig.local
+
+[core]
+	editor = nano
+
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+
+# http://stackoverflow.com/a/23918418/89484
+[push]
+	default = simple
