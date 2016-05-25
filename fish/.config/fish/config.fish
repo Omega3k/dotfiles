@@ -6,9 +6,9 @@ set LSCOLORS Exfxcxdxbxegedabagacad
 set GREP_OPTIONS "--color=auto"
 set GREP_COLOR "1;32"
 
-# export the path to the gnu coreutils, so that `ls` et al is used 
+# export the path to the gnu coreutils, so that `ls` et al is used
 # instead of the provided bsd coreutils on mac os x. 
-set PATH "/usr/local/opt/coreutils/libexec/gnubin" $PATH
+set PATH "/usr/local/opt/coreutils/libexec/gnubin" "/usr/local/sbin" $PATH
 set MANPATH "/usr/local/opt/coreutils/libexec/gnuman" $MANPATH
 
 # Readline colors
