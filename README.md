@@ -11,7 +11,7 @@ Misc shell-scripts, config-files etc.
 ### mac
 * install [homebrew][brew]
 * `brew tap caskroom/cask`
-* `brew install fish stow coreutils moreutils emacs tree`
+* `brew install fish stow coreutils moreutils gpg2 emacs tree`
 
 
 ## usage
@@ -21,7 +21,7 @@ cd $HOME
 git clone https://github.com/Omega3k/dotfiles.git
 cd dotfiles
     
-stow fish git
+stow emacs fish git gpg
 ```
 
 `stow` is used to manage symlinks to the "packages". Make all your edits directly in the git repo and let `stow` worry about keeping the symlinks up to date. See `man stow` for more details. 
@@ -32,6 +32,7 @@ stow fish git
 * emacs
 * fish
 * git
+* gpg
 
 
 [brew]: http://brew.sh "Homebrew - The missing package manager for OS X"
