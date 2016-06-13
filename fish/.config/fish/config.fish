@@ -1,8 +1,8 @@
-
 # http://osxdaily.com/2013/02/05/improve-terminal-appearance-mac-os-x/
 set PS1 "\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
 set CLICOLOR 1
-set LSCOLORS Exfxcxdxbxegedabagacad
+# set LSCOLORS Exfxcxdxbxegedabagacad
+# set LSCOLORS gxfxbEaEBxxEhEhBaDaCaD
 set GREP_OPTIONS "--color=auto"
 set GREP_COLOR "1;32"
 
@@ -10,6 +10,23 @@ set GREP_COLOR "1;32"
 # instead of the provided bsd coreutils on mac os x. 
 set PATH "/usr/local/opt/coreutils/libexec/gnubin" $PATH
 set MANPATH "/usr/local/opt/coreutils/libexec/gnuman" $MANPATH
+
+set -gx EDITOR "emacsclient"
+set -gx ALTERNATE_EDITOR "emacs"
+set -gx VISUAL $EDITOR
+
+# http://superuser.com/questions/71588/how-to-syntax-highlight-via-less
+set -gx LESSOPEN "| pygmentize -O style=monokai -f console256 -g %s"
+set -gx LESS " -R "
+
+switch $TERM
+  case cygwin linux xterm xterm-256color
+    eval (dircolors -c ~/.dircolors | sed 's/>&\/dev\/null$//')
+  case '*'
+    eval (dircolors -c ~/.dircolors | sed 's/>&\/dev\/null$//')
+end
+
+# . ~/.config/fish/aliases.fish
 
 # Readline colors
 set -g fish_color_autosuggestion 555 yellow
