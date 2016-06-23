@@ -1,5 +1,5 @@
-function ip -d "Display IP-address"
-  set -l param "param not given"
+function ip -d "Display ip address"
+  set -l param "param was not provided"
 
   if test $argv[1]
     set param $argv[1]
@@ -7,13 +7,18 @@ function ip -d "Display IP-address"
 
   switch $param
   case "-i" "--internal" "local"
-    if test ipconfig
-      ipconfig getifaddr en0
+    # the internal ip address for my macbook air
+    if test (uname) = "Darwin"
+      ifconfig en0 | grep broadcast | awk '{print $2; exit}'
+
+    # the internal ip address for my linux laptop
     else
       ifconfig wlan0 | grep Bcast | awk '{print $2; exit}' | sed s/addr://
     end
+
   case "-e" "--external" "www"
     dig +short myip.opendns.com @resolver1.opendns.com
+
   case "*"
     echo "Usage: ip [PARAM]"
     echo "Display either the internal or external ip address. "
