@@ -7,7 +7,7 @@ function ip -d "Display IP-address"
 
   switch $param
   case "-i" "--internal" "local"
-    if test -e ipconfig
+    if test ipconfig
       ipconfig getifaddr en0
     else
       ifconfig wlan0 | grep Bcast | awk '{print $2; exit}' | sed s/addr://
