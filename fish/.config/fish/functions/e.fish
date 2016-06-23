@@ -1,3 +1,3 @@
 function e -d "Open Emacs"
-  emacs $argv
+  emacsclient $argv
 end
